@@ -1,9 +1,10 @@
 import Foundation
 
 public struct Shell {
-    public static func execute(command: String, arguments: [String]? = nil) -> String {
+    public static func execute(command: String, arguments: [String]? = nil, executionPath: String = ".") -> String {
         let process = Process()
         process.launchPath = command
+        process.currentDirectoryPath = executionPath
         process.arguments = arguments
 
         let pipe = Pipe()
